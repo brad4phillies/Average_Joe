@@ -101,6 +101,11 @@ public class App extends Application {
     Button SlotsRaise = new Button();
     Button SlotsLower = new Button();
     Button SlotsSpin = new Button();
+    Button BlackPlay = new Button();
+    Button BlackRaise = new Button();
+    Button BlackLower = new Button();
+    Button BlackHit = new Button();
+    Button BlackStand = new Button();
 
 
     Button BankWithdrawLabel = new Button();
@@ -108,6 +113,11 @@ public class App extends Application {
     Button SlotsOutputLabel = new Button();
     Button SlotsWinningLabel = new Button();
     Button SlotsBetLabel = new Button();
+    Button BlackBet = new Button();
+    Button Black1 = new Button();
+    Button Black2 = new Button();
+    Button Black3 = new Button();
+    Button Black4 = new Button();
 
 
         //Creating an image 
@@ -296,7 +306,7 @@ public class App extends Application {
     
       //Setting the stage
     
-     Group root = new Group(nameTF, nameEnter, AVJFun, AVJFunNight, AVJWork, AVJWorkNight,toWork, toFun, Hospital, Casino, Bank, Computer,  Target,  McD, CasinoIMG, Slots, Blackjack, Lottery, SlotsIMG, BlackJackIMG, LotteryIMG, EmergencyIMG, AppointmentIMG, SurgeryIMG, HospitalIMG,  Appointment, Surgery, Emergency, McDonaldsWorkIMG, TargetApplyIMG, TargetWorkIMG, ComputerApplyIMG, ComputerWorkIMG, BankIMG, BankWithdrawIMG, BankDepositIMG, BankWithdraw, BankDeposit, BankWithdrawRaise, BankWithdrawLower,BankWithdrawLabel, BankDepositRaise, BankDepositLower, BankDepositLabel,BankDepositConfirm, BankWithdrawConfirm, Computer1,Computer2, Computer3, Computer4, McDonalds,  EmergencyDo, CheckDo, TargetWork, TargetApply, SurgeryDo, SlotsOutputLabel, SlotsRaise, SlotsLower, SlotsSpin, SlotsWinningLabel, SlotsBetLabel, back, labelHBox);
+     Group root = new Group(nameTF, nameEnter, AVJFun, AVJFunNight, AVJWork, AVJWorkNight,toWork, toFun, Hospital, Casino, Bank, Computer,  Target,  McD, CasinoIMG, Slots, Blackjack, Lottery, SlotsIMG, BlackJackIMG, LotteryIMG, EmergencyIMG, AppointmentIMG, SurgeryIMG, HospitalIMG,  Appointment, Surgery, Emergency, McDonaldsWorkIMG, TargetApplyIMG, TargetWorkIMG, ComputerApplyIMG, ComputerWorkIMG, BankIMG, BankWithdrawIMG, BankDepositIMG, BankWithdraw, BankDeposit, BankWithdrawRaise, BankWithdrawLower,BankWithdrawLabel, BankDepositRaise, BankDepositLower, BankDepositLabel,BankDepositConfirm, BankWithdrawConfirm, Computer1,Computer2, Computer3, Computer4, McDonalds,  EmergencyDo, CheckDo, TargetWork, TargetApply, SurgeryDo, SlotsOutputLabel, SlotsRaise, SlotsLower, SlotsSpin, SlotsWinningLabel, SlotsBetLabel, Black1, Black2, Black3, Black4, BlackBet, BlackPlay, BlackRaise, BlackLower, BlackHit, BlackStand, back, labelHBox);
       Scene scene = new Scene(root, 800, 600, Color.BEIGE);
       stage.setTitle("Main Screen");
       stage.setScene(scene);
@@ -1519,6 +1529,16 @@ toWork.setText("9 to 5 Street");
         BlackJackIMG.setVisible(true);
         back.setVisible(true);
         labelHBox.setVisible(true);
+        BlackBet.setVisible(true);
+        Black1.setVisible(true);
+        Black2.setVisible(true);
+        Black3.setVisible(true);
+        Black4.setVisible(true);
+        BlackPlay.setVisible(true);
+        BlackHit.setVisible(true);
+        BlackStand.setVisible(true);
+        BlackRaise.setVisible(true);
+        BlackLower.setVisible(true);
 
 
          MoneyLabel.setText("Money on Hand: " + money);
@@ -1911,7 +1931,7 @@ toWork.setText("9 to 5 Street");
 
     SlotsWinningLabel.setStyle("-fx-background-color: #ffffff00");
     SlotsWinningLabel.setTranslateX(350);
-    SlotsWinningLabel.setTranslateY(310);
+    SlotsWinningLabel.setTranslateY(320);
     SlotsWinningLabel.setPrefWidth(100);
     SlotsWinningLabel.setPrefHeight(10);
     SlotsWinningLabel.setVisible(false);
@@ -1963,6 +1983,7 @@ toWork.setText("9 to 5 Street");
     SlotsSpin.setOnAction(new EventHandler<ActionEvent>() {
       @Override public void handle(ActionEvent e) {
         BigDecimal valueBig = new BigDecimal(value);
+        if(money.compareTo(valueBig) >= 0){
         money = money.subtract(valueBig);
         int random1 = (int)(Math.random()*10);
         int random2 = (int)(Math.random()*10);
@@ -1973,6 +1994,38 @@ toWork.setText("9 to 5 Street");
           SlotsWinningLabel.setText(winning+"");
           BigDecimal winnings = new BigDecimal(winning);
           money = money.add(winnings);
+        }}
+        
+        MoneyLabel.setText("Money on Hand: " + money);
+   DayLabel.setText("Day: " + day);
+   HoursLabel.setText("Hours Left: " + hours);
+   HealthLabel.setText("Health: " + health);
+   BankLabel.setText("Money in Account: " + bank);
+   NameLabel.setText("Name: " + name);
+      }
+    });
+
+
+
+
+    BlackPlay.setStyle("-fx-background-color: #ffffff00");
+    BlackPlay.setTranslateX(250);
+    BlackPlay.setTranslateY(495);
+    BlackPlay.setPrefWidth(100);
+    BlackPlay.setPrefHeight(30);
+    BlackPlay.setVisible(false);
+    BlackPlay.setOnAction(new EventHandler<ActionEvent>() {
+      @Override public void handle(ActionEvent e) {
+        BigDecimal valueBig = new BigDecimal(value);
+        if(money.compareTo(valueBig) >= 0){
+          int card1 = (int)(Math.random()*11)+1;
+          Black1.setText("" + card1);
+          int card2 = (int)(Math.random()*11)+1;
+          Black2.setText("" + card2);
+          int card3 = (int)(Math.random()*11)+1;
+          Black3.setText("" + card3);
+          int card4 = (int)(Math.random()*11)+1;
+          Black4.setText("" + card4);
         }
         
         MoneyLabel.setText("Money on Hand: " + money);
@@ -1983,6 +2036,145 @@ toWork.setText("9 to 5 Street");
    NameLabel.setText("Name: " + name);
       }
     });
+
+    BlackRaise.setStyle("-fx-background-color: #ffffff00");
+    BlackRaise.setTranslateX(425);
+    BlackRaise.setTranslateY(525);
+    BlackRaise.setPrefWidth(100);
+    BlackRaise.setPrefHeight(30);
+    BlackRaise.setVisible(false);
+    BlackRaise.setOnAction(new EventHandler<ActionEvent>() {
+      @Override public void handle(ActionEvent e) {
+        BigDecimal valueBig = new BigDecimal(value);
+        if(money.compareTo(valueBig) > 0){
+          value += 1000;
+          BlackBet.setText("" + value);
+        }
+        
+        MoneyLabel.setText("Money on Hand: " + money);
+   DayLabel.setText("Day: " + day);
+   HoursLabel.setText("Hours Left: " + hours);
+   HealthLabel.setText("Health: " + health);
+   BankLabel.setText("Money in Account: " + bank);
+   NameLabel.setText("Name: " + name);
+      }
+    });
+
+    BlackLower.setStyle("-fx-background-color: #ffffff00");
+    BlackLower.setTranslateX(425);
+    BlackLower.setTranslateY(555);
+    BlackLower.setPrefWidth(100);
+    BlackLower.setPrefHeight(30);
+    BlackLower.setVisible(false);
+    BlackLower.setOnAction(new EventHandler<ActionEvent>() {
+      @Override public void handle(ActionEvent e) {
+        if(value - 1000 >= 0){
+          value -= 1000;
+          BlackBet.setText("" + value);
+        }
+        
+        MoneyLabel.setText("Money on Hand: " + money);
+   DayLabel.setText("Day: " + day);
+   HoursLabel.setText("Hours Left: " + hours);
+   HealthLabel.setText("Health: " + health);
+   BankLabel.setText("Money in Account: " + bank);
+   NameLabel.setText("Name: " + name);
+      }
+    });
+
+    BlackHit.setStyle("-fx-background-color: #ffffff00");
+    BlackHit.setTranslateX(250);
+    BlackHit.setTranslateY(525);
+    BlackHit.setPrefWidth(100);
+    BlackHit.setPrefHeight(30);
+    BlackHit.setVisible(false);
+    BlackHit.setOnAction(new EventHandler<ActionEvent>() {
+      @Override public void handle(ActionEvent e) {
+        BigDecimal emer = new BigDecimal("100000");
+        if(money.compareTo(emer) >= 0){
+          money = money.subtract(emer);
+          hours -= 2;
+          health += 60;
+          if(health > 100){
+            health = 100;
+          }
+        }else{}
+        
+        MoneyLabel.setText("Money on Hand: " + money);
+   DayLabel.setText("Day: " + day);
+   HoursLabel.setText("Hours Left: " + hours);
+   HealthLabel.setText("Health: " + health);
+   BankLabel.setText("Money in Account: " + bank);
+   NameLabel.setText("Name: " + name);
+      }
+    });
+
+    BlackStand.setStyle("-fx-background-color: #ffffff00");
+    BlackStand.setTranslateX(250);
+    BlackStand.setTranslateY(555);
+    BlackStand.setPrefWidth(100);
+    BlackStand.setPrefHeight(30);
+    BlackStand.setVisible(false);
+    BlackStand.setOnAction(new EventHandler<ActionEvent>() {
+      @Override public void handle(ActionEvent e) {
+        BigDecimal emer = new BigDecimal("100000");
+        if(money.compareTo(emer) >= 0){
+          money = money.subtract(emer);
+          hours -= 2;
+          health += 60;
+          if(health > 100){
+            health = 100;
+          }
+        }else{}
+        
+        MoneyLabel.setText("Money on Hand: " + money);
+   DayLabel.setText("Day: " + day);
+   HoursLabel.setText("Hours Left: " + hours);
+   HealthLabel.setText("Health: " + health);
+   BankLabel.setText("Money in Account: " + bank);
+   NameLabel.setText("Name: " + name);
+      }
+    });
+
+    BlackBet.setStyle("-fx-background-color: #ffffff00");
+    BlackBet.setTranslateX(425);
+    BlackBet.setTranslateY(500);
+    BlackBet.setPrefWidth(75);
+    BlackBet.setPrefHeight(10);
+    BlackBet.setVisible(false);
+    BlackBet.setFont(Font.font("Comic Sans MS", FontPosture.REGULAR, 10));
+
+    Black1.setStyle("-fx-background-color: #ffffff00");
+    Black1.setTranslateX(335);
+    Black1.setTranslateY(545);
+    Black1.setPrefWidth(50);
+    Black1.setPrefHeight(50);
+    Black1.setVisible(false);
+    Black1.setFont(Font.font("Comic Sans MS", FontPosture.REGULAR, 20));
+
+    Black2.setStyle("-fx-background-color: #ffffff00");
+    Black2.setTranslateX(335);
+    Black2.setTranslateY(470);
+    Black2.setPrefWidth(50);
+    Black2.setPrefHeight(50);
+    Black2.setVisible(false);
+    Black2.setFont(Font.font("Comic Sans MS", FontPosture.REGULAR, 20));
+
+    Black3.setStyle("-fx-background-color: #ffffff00");
+    Black3.setTranslateX(380);
+    Black3.setTranslateY(545);
+    Black3.setPrefWidth(160);
+    Black3.setPrefHeight(10);
+    Black3.setVisible(false);
+    Black3.setFont(Font.font("Comic Sans MS", FontPosture.REGULAR, 20));
+
+    Black4.setStyle("-fx-background-color: #ffffff00");
+    Black4.setTranslateX(380);
+    Black4.setTranslateY(470);
+    Black4.setPrefWidth(160);
+    Black4.setPrefHeight(10);
+    Black4.setVisible(false);
+    Black4.setFont(Font.font("Comic Sans MS", FontPosture.REGULAR, 20));
 
     back.setText("Back");
     back.setStyle("-fx-border: 120px solid; -fx-background-color: #990000; -fx-border-color: #ffffff");
@@ -2079,6 +2271,17 @@ toWork.setText("9 to 5 Street");
         SlotsSpin.setVisible(false);
         SlotsWinningLabel.setVisible(false);
         SlotsBetLabel.setVisible(false);
+        BlackBet.setVisible(false);
+        Black1.setVisible(false);
+        Black2.setVisible(false);
+        Black3.setVisible(false);
+        Black4.setVisible(false);
+        BlackPlay.setVisible(false);
+        BlackHit.setVisible(false);
+        BlackStand.setVisible(false);
+        BlackRaise.setVisible(false);
+        BlackLower.setVisible(false);
+
 
 
 
