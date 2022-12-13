@@ -55,6 +55,7 @@ public class App extends Application {
   public static int BlackPlayer;
   public static int BlackComputer;
   public static boolean isGame;
+  public static String LastButton = "";
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -67,10 +68,6 @@ public class App extends Application {
     Label BankLabel = new Label();
     VBox labelVBox = new VBox(NameLabel, HoursLabel, DayLabel, MoneyLabel, HealthLabel, BankLabel);
     HBox labelHBox = new HBox( placeHolder, labelVBox);
-
-    TextField nameTF = new TextField("What is your name?");
-    nameTF.setPrefWidth(200);
-    nameTF.setPrefHeight(50);
     
 
     Button nameEnter = new Button();
@@ -146,7 +143,7 @@ public class App extends Application {
       AVJFunNight.setFitHeight(600); 
       AVJFunNight.setFitWidth(800); 
       AVJFunNight.setPreserveRatio(true); 
-      AVJFunNight.setVisible(false);
+      AVJFunNight.setVisible(true);
 
     Image image2 = new Image("file:AverageJoeWorkDay.jpg");  
       ImageView AVJWork = new ImageView(image2); 
@@ -315,7 +312,7 @@ public class App extends Application {
     
       //Setting the stage
     
-     Group root = new Group(nameTF, nameEnter, AVJFun, AVJFunNight, AVJWork, AVJWorkNight,toWork, toFun, Hospital, Casino, Bank, Computer,  Target,  McD, CasinoIMG, Slots, Blackjack, Lottery, SlotsIMG, BlackJackIMG, LotteryIMG, EmergencyIMG, AppointmentIMG, SurgeryIMG, HospitalIMG,  Appointment, Surgery, Emergency, McDonaldsWorkIMG, TargetApplyIMG, TargetWorkIMG, ComputerApplyIMG, ComputerWorkIMG, BankIMG, BankWithdrawIMG, BankDepositIMG, BankWithdraw, BankDeposit, BankWithdrawRaise, BankWithdrawLower,BankWithdrawLabel, BankDepositRaise, BankDepositLower, BankDepositLabel,BankDepositConfirm, BankWithdrawConfirm, Computer1,Computer2, Computer3, Computer4, McDonalds,  EmergencyDo, CheckDo, TargetWork, TargetApply, SurgeryDo, SlotsOutputLabel, SlotsRaise, SlotsLower, SlotsSpin, SlotsWinningLabel, SlotsBetLabel, Black1, Black2, Black3, Black4, BlackBet, BlackPlay, BlackRaise, BlackLower, BlackHit, BlackStand, back, labelHBox);
+     Group root = new Group(AVJFun, AVJFunNight, nameEnter, AVJWork, AVJWorkNight,toWork, toFun, Hospital, Casino, Bank, Computer,  Target,  McD, CasinoIMG, Slots, Blackjack, Lottery, SlotsIMG, BlackJackIMG, LotteryIMG, EmergencyIMG, AppointmentIMG, SurgeryIMG, HospitalIMG,  Appointment, Surgery, Emergency, McDonaldsWorkIMG, TargetApplyIMG, TargetWorkIMG, ComputerApplyIMG, ComputerWorkIMG, BankIMG, BankWithdrawIMG, BankDepositIMG, BankWithdraw, BankDeposit, BankWithdrawRaise, BankWithdrawLower,BankWithdrawLabel, BankDepositRaise, BankDepositLower, BankDepositLabel,BankDepositConfirm, BankWithdrawConfirm, Computer1,Computer2, Computer3, Computer4, McDonalds,  EmergencyDo, CheckDo, TargetWork, TargetApply, SurgeryDo, SlotsOutputLabel, SlotsRaise, SlotsLower, SlotsSpin, SlotsWinningLabel, SlotsBetLabel, Black1, Black2, Black3, Black4, BlackBet, BlackPlay, BlackRaise, BlackLower, BlackHit, BlackStand, back, labelHBox);
       Scene scene = new Scene(root, 800, 600, Color.BEIGE);
       stage.setTitle("Main Screen");
       stage.setScene(scene);
@@ -341,24 +338,133 @@ public class App extends Application {
             DayLabel.setTextFill(Color.BLACK);
             BankLabel.setTextFill(Color.BLACK);
             HealthLabel.setTextFill(Color.BLACK);
+            TargetApply.setVisible(false);
             
     
 
 
 
-toWork.setVisible(false);
-  toFun.setVisible(false);
-    back.setVisible(false);
-    nameEnter.setText("Enter Name");
-    nameEnter.setStyle("-fx-border-color: #ffffff");
-      nameEnter.setTranslateX(250);
-      nameEnter.setTranslateY(0);
+
+    nameEnter.setText("New Game");
+    nameEnter.setTextFill(Color.WHITE);
+    nameEnter.setStyle("-fx-border: 120px solid; -fx-background-color: #33b65b; -fx-border-color: #ffffff");
+      nameEnter.setTranslateX(300);
+      nameEnter.setTranslateY(125);
     nameEnter.setPrefWidth(200);
     nameEnter.setPrefHeight(50);
     nameEnter.setFont(Font.font("Comic Sans MS", FontWeight.BOLD, FontPosture.REGULAR, 20));
     nameEnter.setOnAction(new EventHandler<ActionEvent>() {
       @Override public void handle(ActionEvent e) {
-        name = nameTF.getText();
+        scene.setFill(Color.BEIGE);
+        toWork.setVisible(true);
+        AVJFunNight.setVisible(false);
+        AVJFun.setVisible(false);
+        if(hours > 12){
+            AVJFun.setVisible(true);
+            MoneyLabel.setTextFill(Color.BLACK);
+            NameLabel.setTextFill(Color.BLACK);
+            HoursLabel.setTextFill(Color.BLACK);
+            DayLabel.setTextFill(Color.BLACK);
+            BankLabel.setTextFill(Color.BLACK);
+            HealthLabel.setTextFill(Color.BLACK);
+            MoneyLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            NameLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            HoursLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            DayLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            BankLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            HealthLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+        }else{
+            AVJFunNight.setVisible(true);
+            MoneyLabel.setTextFill(Color.GREEN);
+            NameLabel.setTextFill(Color.ORANGE);
+            HoursLabel.setTextFill(Color.BLUE);
+            DayLabel.setTextFill(Color.YELLOW);
+            BankLabel.setTextFill(Color.GREEN);
+            HealthLabel.setTextFill(Color.RED);
+        }
+        AVJWork.setVisible(false);
+        AVJWorkNight.setVisible(false);
+        toFun.setVisible(false);
+        Bank.setVisible(true);
+        Casino.setVisible(true);
+        Hospital.setVisible(true);
+        McD.setVisible(false);
+        Computer.setVisible(false);
+        Target.setVisible(false);
+        HospitalIMG.setVisible(false);
+        Appointment.setVisible(false);
+        Surgery.setVisible(false);
+        Emergency.setVisible(false);
+        EmergencyIMG.setVisible(false);
+        AppointmentIMG.setVisible(false);
+        SurgeryIMG.setVisible(false);
+        CasinoIMG.setVisible(false);
+        Slots.setVisible(false);
+        Blackjack.setVisible(false);
+        Lottery.setVisible(false);
+        SlotsIMG.setVisible(false);
+        BlackJackIMG.setVisible(false);
+        LotteryIMG.setVisible(false);
+        BankIMG.setVisible(false);
+        BankWithdrawIMG.setVisible(false);
+        BankDepositIMG.setVisible(false);
+        McDonaldsWorkIMG.setVisible(false);
+        TargetApplyIMG.setVisible(false);
+        TargetWorkIMG.setVisible(false);
+        ComputerWorkIMG.setVisible(false);
+        ComputerApplyIMG.setVisible(false);
+        BankWithdraw.setVisible(false);
+        BankDeposit.setVisible(false);
+        McDonalds.setVisible(false);
+        TargetApply.setVisible(false);
+        TargetWork.setVisible(false);
+        Computer2.setVisible(false);
+        Computer1.setVisible(false);
+        Computer3.setVisible(false);
+        Computer4.setVisible(false);
+        BankDepositRaise.setVisible(false);
+        BankDepositLower.setVisible(false);
+        BankDepositLabel.setVisible(false);
+        BankDepositConfirm.setVisible(false);
+        BankWithdrawRaise.setVisible(false);
+        BankWithdrawLower.setVisible(false);
+        BankWithdrawLabel.setVisible(false);
+        BankWithdrawConfirm.setVisible(false);
+        SurgeryDo.setVisible(false);
+        CheckDo.setVisible(false);
+        EmergencyDo.setVisible(false);
+        SlotsOutputLabel.setVisible(false);
+        SlotsRaise.setVisible(false);
+        SlotsLower.setVisible(false);
+        SlotsSpin.setVisible(false);
+        SlotsWinningLabel.setVisible(false);
+        SlotsBetLabel.setVisible(false);
+        BlackBet.setVisible(false);
+        Black1.setVisible(false);
+        Black2.setVisible(false);
+        Black3.setVisible(false);
+        Black4.setVisible(false);
+        BlackPlay.setVisible(false);
+        BlackHit.setVisible(false);
+        BlackStand.setVisible(false);
+        BlackRaise.setVisible(false);
+        BlackLower.setVisible(false);
+        nameEnter.setVisible(false);
+        back.setVisible(true);
+
+
+
+
+        value = 0;
+        labelHBox.setVisible(true);
+        
+         MoneyLabel.setText("Money on Hand: " + money);
+    DayLabel.setText("Day: " + day);
+    HoursLabel.setText("Hours Left: " + hours);
+    HealthLabel.setText("Health: " + health);
+    BankLabel.setText("Money in Account: " + bank);
+    NameLabel.setText("Name: " + name);
+
       }
         });
 
@@ -373,6 +479,7 @@ toWork.setText("9 to 5 Street");
       toWork.setTranslateY(20);
     toWork.setPrefWidth(200);
     toWork.setPrefHeight(60);
+    toWork.setVisible(false);
     toWork.setFont(Font.font("Comic Sans MS", FontWeight.BOLD, FontPosture.REGULAR, 20));
     toWork.setOnAction(new EventHandler<ActionEvent>() {
       @Override public void handle(ActionEvent e) {
@@ -418,6 +525,138 @@ toWork.setText("9 to 5 Street");
           if(day < 7){
           day += 1;
           } else{
+
+            scene.setFill(Color.BEIGE);
+        toWork.setVisible(false);
+        AVJFunNight.setVisible(false);
+        AVJFun.setVisible(false);
+        if(hours > 12){
+            AVJFun.setVisible(false);
+            MoneyLabel.setTextFill(Color.BLACK);
+            NameLabel.setTextFill(Color.BLACK);
+            HoursLabel.setTextFill(Color.BLACK);
+            DayLabel.setTextFill(Color.BLACK);
+            BankLabel.setTextFill(Color.BLACK);
+            HealthLabel.setTextFill(Color.BLACK);
+            MoneyLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            NameLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            HoursLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            DayLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            BankLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            HealthLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+        }else{
+            AVJFunNight.setVisible(false);
+            MoneyLabel.setTextFill(Color.GREEN);
+            NameLabel.setTextFill(Color.ORANGE);
+            HoursLabel.setTextFill(Color.BLUE);
+            DayLabel.setTextFill(Color.YELLOW);
+            BankLabel.setTextFill(Color.GREEN);
+            HealthLabel.setTextFill(Color.RED);
+        }
+        AVJWork.setVisible(false);
+        AVJWorkNight.setVisible(false);
+        toFun.setVisible(false);
+        Bank.setVisible(true);
+        Casino.setVisible(true);
+        Hospital.setVisible(true);
+        McD.setVisible(false);
+        Computer.setVisible(false);
+        Target.setVisible(false);
+        HospitalIMG.setVisible(false);
+        Appointment.setVisible(false);
+        Surgery.setVisible(false);
+        Emergency.setVisible(false);
+        EmergencyIMG.setVisible(false);
+        AppointmentIMG.setVisible(false);
+        SurgeryIMG.setVisible(false);
+        CasinoIMG.setVisible(false);
+        Slots.setVisible(false);
+        Blackjack.setVisible(false);
+        Lottery.setVisible(false);
+        SlotsIMG.setVisible(false);
+        BlackJackIMG.setVisible(false);
+        LotteryIMG.setVisible(false);
+        BankIMG.setVisible(false);
+        BankWithdrawIMG.setVisible(false);
+        BankDepositIMG.setVisible(false);
+        McDonaldsWorkIMG.setVisible(false);
+        TargetApplyIMG.setVisible(false);
+        TargetWorkIMG.setVisible(false);
+        ComputerWorkIMG.setVisible(false);
+        ComputerApplyIMG.setVisible(false);
+        BankWithdraw.setVisible(false);
+        BankDeposit.setVisible(false);
+        McDonalds.setVisible(false);
+        TargetApply.setVisible(false);
+        TargetWork.setVisible(false);
+        Computer2.setVisible(false);
+        Computer1.setVisible(false);
+        Computer3.setVisible(false);
+        Computer4.setVisible(false);
+        BankDepositRaise.setVisible(false);
+        BankDepositLower.setVisible(false);
+        BankDepositLabel.setVisible(false);
+        BankDepositConfirm.setVisible(false);
+        BankWithdrawRaise.setVisible(false);
+        BankWithdrawLower.setVisible(false);
+        BankWithdrawLabel.setVisible(false);
+        BankWithdrawConfirm.setVisible(false);
+        SurgeryDo.setVisible(false);
+        CheckDo.setVisible(false);
+        EmergencyDo.setVisible(false);
+        SlotsOutputLabel.setVisible(false);
+        SlotsRaise.setVisible(false);
+        SlotsLower.setVisible(false);
+        SlotsSpin.setVisible(false);
+        SlotsWinningLabel.setVisible(false);
+        SlotsBetLabel.setVisible(false);
+        BlackBet.setVisible(false);
+        Black1.setVisible(false);
+        Black2.setVisible(false);
+        Black3.setVisible(false);
+        Black4.setVisible(false);
+        BlackPlay.setVisible(false);
+        BlackHit.setVisible(false);
+        BlackStand.setVisible(false);
+        BlackRaise.setVisible(false);
+        BlackLower.setVisible(false);
+        nameEnter.setVisible(false);
+        back.setVisible(false);
+
+        AVJFunNight.setVisible(true);
+
+ money = new BigDecimal("0");
+ health = 100;
+day = 1;
+ name = "Joe Smith";
+hours = 24;
+bank = new BigDecimal("0");
+job = "McDonalds";
+ranJob = 0;
+ranComputer = 0;
+value = 0;
+ card1 = 0;
+card2 = 0;
+card3 = 0;
+card4 = 0;
+BlackPlayer = 0;
+ BlackComputer = 0;
+ isGame = false;
+LastButton = "";
+nameEnter.setVisible(true);
+
+
+
+
+        value = 0;
+        labelHBox.setVisible(false);
+        
+         MoneyLabel.setText("Money on Hand: " + money);
+    DayLabel.setText("Day: " + day);
+    HoursLabel.setText("Hours Left: " + hours);
+    HealthLabel.setText("Health: " + health);
+    BankLabel.setText("Money in Account: " + bank);
+    NameLabel.setText("Name: " + name);
             
           }
         }
@@ -480,6 +719,138 @@ toWork.setText("9 to 5 Street");
           if(day < 7){
           day += 1;
           } else{
+
+            scene.setFill(Color.BEIGE);
+            toWork.setVisible(false);
+            AVJFunNight.setVisible(false);
+            AVJFun.setVisible(false);
+            if(hours > 12){
+                AVJFun.setVisible(false);
+                MoneyLabel.setTextFill(Color.BLACK);
+                NameLabel.setTextFill(Color.BLACK);
+                HoursLabel.setTextFill(Color.BLACK);
+                DayLabel.setTextFill(Color.BLACK);
+                BankLabel.setTextFill(Color.BLACK);
+                HealthLabel.setTextFill(Color.BLACK);
+                MoneyLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                NameLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                HoursLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                DayLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                BankLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                HealthLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            }else{
+                AVJFunNight.setVisible(false);
+                MoneyLabel.setTextFill(Color.GREEN);
+                NameLabel.setTextFill(Color.ORANGE);
+                HoursLabel.setTextFill(Color.BLUE);
+                DayLabel.setTextFill(Color.YELLOW);
+                BankLabel.setTextFill(Color.GREEN);
+                HealthLabel.setTextFill(Color.RED);
+            }
+            AVJWork.setVisible(false);
+            AVJWorkNight.setVisible(false);
+            toFun.setVisible(false);
+            Bank.setVisible(true);
+            Casino.setVisible(true);
+            Hospital.setVisible(true);
+            McD.setVisible(false);
+            Computer.setVisible(false);
+            Target.setVisible(false);
+            HospitalIMG.setVisible(false);
+            Appointment.setVisible(false);
+            Surgery.setVisible(false);
+            Emergency.setVisible(false);
+            EmergencyIMG.setVisible(false);
+            AppointmentIMG.setVisible(false);
+            SurgeryIMG.setVisible(false);
+            CasinoIMG.setVisible(false);
+            Slots.setVisible(false);
+            Blackjack.setVisible(false);
+            Lottery.setVisible(false);
+            SlotsIMG.setVisible(false);
+            BlackJackIMG.setVisible(false);
+            LotteryIMG.setVisible(false);
+            BankIMG.setVisible(false);
+            BankWithdrawIMG.setVisible(false);
+            BankDepositIMG.setVisible(false);
+            McDonaldsWorkIMG.setVisible(false);
+            TargetApplyIMG.setVisible(false);
+            TargetWorkIMG.setVisible(false);
+            ComputerWorkIMG.setVisible(false);
+            ComputerApplyIMG.setVisible(false);
+            BankWithdraw.setVisible(false);
+            BankDeposit.setVisible(false);
+            McDonalds.setVisible(false);
+            TargetApply.setVisible(false);
+            TargetWork.setVisible(false);
+            Computer2.setVisible(false);
+            Computer1.setVisible(false);
+            Computer3.setVisible(false);
+            Computer4.setVisible(false);
+            BankDepositRaise.setVisible(false);
+            BankDepositLower.setVisible(false);
+            BankDepositLabel.setVisible(false);
+            BankDepositConfirm.setVisible(false);
+            BankWithdrawRaise.setVisible(false);
+            BankWithdrawLower.setVisible(false);
+            BankWithdrawLabel.setVisible(false);
+            BankWithdrawConfirm.setVisible(false);
+            SurgeryDo.setVisible(false);
+            CheckDo.setVisible(false);
+            EmergencyDo.setVisible(false);
+            SlotsOutputLabel.setVisible(false);
+            SlotsRaise.setVisible(false);
+            SlotsLower.setVisible(false);
+            SlotsSpin.setVisible(false);
+            SlotsWinningLabel.setVisible(false);
+            SlotsBetLabel.setVisible(false);
+            BlackBet.setVisible(false);
+            Black1.setVisible(false);
+            Black2.setVisible(false);
+            Black3.setVisible(false);
+            Black4.setVisible(false);
+            BlackPlay.setVisible(false);
+            BlackHit.setVisible(false);
+            BlackStand.setVisible(false);
+            BlackRaise.setVisible(false);
+            BlackLower.setVisible(false);
+            nameEnter.setVisible(false);
+            back.setVisible(false);
+    
+            AVJFunNight.setVisible(true);
+    
+     money = new BigDecimal("0");
+     health = 100;
+    day = 1;
+     name = "Joe Smith";
+    hours = 24;
+    bank = new BigDecimal("0");
+    job = "McDonalds";
+    ranJob = 0;
+    ranComputer = 0;
+    value = 0;
+     card1 = 0;
+    card2 = 0;
+    card3 = 0;
+    card4 = 0;
+    BlackPlayer = 0;
+     BlackComputer = 0;
+     isGame = false;
+    LastButton = "";
+    nameEnter.setVisible(true);
+    
+    
+    
+    
+            value = 0;
+            labelHBox.setVisible(false);
+            
+             MoneyLabel.setText("Money on Hand: " + money);
+        DayLabel.setText("Day: " + day);
+        HoursLabel.setText("Hours Left: " + hours);
+        HealthLabel.setText("Health: " + health);
+        BankLabel.setText("Money in Account: " + bank);
+        NameLabel.setText("Name: " + name);
             
           }
         }
@@ -524,6 +895,7 @@ toWork.setText("9 to 5 Street");
         Appointment.setVisible(true);
         back.setVisible(true);
         labelHBox.setVisible(false);
+        LastButton = "Hospital";
 
 
          MoneyLabel.setText("Money on Hand: " + money);
@@ -573,6 +945,7 @@ toWork.setText("9 to 5 Street");
         Lottery.setVisible(true);
         back.setVisible(true);
         labelHBox.setVisible(false);
+        LastButton = "Casino";
 
 
          MoneyLabel.setText("Money on Hand: " + money);
@@ -635,6 +1008,7 @@ toWork.setText("9 to 5 Street");
     DayLabel.setTextFill(Color.BLACK);
     BankLabel.setTextFill(Color.BLACK);
     HealthLabel.setTextFill(Color.BLACK);
+    LastButton = "Bank";
         
         MoneyLabel.setStyle("-fx-background-color:rgba(255, 255, 255,0.7);");
         NameLabel.setStyle("-fx-background-color:rgba(255, 255, 255,0.7);");
@@ -686,6 +1060,7 @@ toWork.setText("9 to 5 Street");
         BankLabel.setTextFill(Color.BLACK);
         HealthLabel.setTextFill(Color.BLACK);
         TargetWork.setVisible(true);
+        LastButton = "Work";
         
         MoneyLabel.setStyle("-fx-background-color:rgba(255, 255, 255,0.7);");
         NameLabel.setStyle("-fx-background-color:rgba(255, 255, 255,0.7);");
@@ -746,6 +1121,7 @@ toWork.setText("9 to 5 Street");
         DayLabel.setTextFill(Color.BLACK);
         BankLabel.setTextFill(Color.BLACK);
         HealthLabel.setTextFill(Color.BLACK);
+        LastButton = "Work";
 
         MoneyLabel.setText("Money on Hand: " + money);
    DayLabel.setText("Day: " + day);
@@ -778,7 +1154,137 @@ toWork.setText("9 to 5 Street");
               if(day < 7){
                 day += 1;
                 } else{
+                  scene.setFill(Color.BEIGE);
+                  toWork.setVisible(false);
+                  AVJFunNight.setVisible(false);
+                  AVJFun.setVisible(false);
+                  if(hours > 12){
+                      AVJFun.setVisible(false);
+                      MoneyLabel.setTextFill(Color.BLACK);
+                      NameLabel.setTextFill(Color.BLACK);
+                      HoursLabel.setTextFill(Color.BLACK);
+                      DayLabel.setTextFill(Color.BLACK);
+                      BankLabel.setTextFill(Color.BLACK);
+                      HealthLabel.setTextFill(Color.BLACK);
+                      MoneyLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      NameLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      HoursLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      DayLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      BankLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      HealthLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                  }else{
+                      AVJFunNight.setVisible(false);
+                      MoneyLabel.setTextFill(Color.GREEN);
+                      NameLabel.setTextFill(Color.ORANGE);
+                      HoursLabel.setTextFill(Color.BLUE);
+                      DayLabel.setTextFill(Color.YELLOW);
+                      BankLabel.setTextFill(Color.GREEN);
+                      HealthLabel.setTextFill(Color.RED);
+                  }
+                  AVJWork.setVisible(false);
+                  AVJWorkNight.setVisible(false);
+                  toFun.setVisible(false);
+                  Bank.setVisible(true);
+                  Casino.setVisible(true);
+                  Hospital.setVisible(true);
+                  McD.setVisible(false);
+                  Computer.setVisible(false);
+                  Target.setVisible(false);
+                  HospitalIMG.setVisible(false);
+                  Appointment.setVisible(false);
+                  Surgery.setVisible(false);
+                  Emergency.setVisible(false);
+                  EmergencyIMG.setVisible(false);
+                  AppointmentIMG.setVisible(false);
+                  SurgeryIMG.setVisible(false);
+                  CasinoIMG.setVisible(false);
+                  Slots.setVisible(false);
+                  Blackjack.setVisible(false);
+                  Lottery.setVisible(false);
+                  SlotsIMG.setVisible(false);
+                  BlackJackIMG.setVisible(false);
+                  LotteryIMG.setVisible(false);
+                  BankIMG.setVisible(false);
+                  BankWithdrawIMG.setVisible(false);
+                  BankDepositIMG.setVisible(false);
+                  McDonaldsWorkIMG.setVisible(false);
+                  TargetApplyIMG.setVisible(false);
+                  TargetWorkIMG.setVisible(false);
+                  ComputerWorkIMG.setVisible(false);
+                  ComputerApplyIMG.setVisible(false);
+                  BankWithdraw.setVisible(false);
+                  BankDeposit.setVisible(false);
+                  McDonalds.setVisible(false);
+                  TargetApply.setVisible(false);
+                  TargetWork.setVisible(false);
+                  Computer2.setVisible(false);
+                  Computer1.setVisible(false);
+                  Computer3.setVisible(false);
+                  Computer4.setVisible(false);
+                  BankDepositRaise.setVisible(false);
+                  BankDepositLower.setVisible(false);
+                  BankDepositLabel.setVisible(false);
+                  BankDepositConfirm.setVisible(false);
+                  BankWithdrawRaise.setVisible(false);
+                  BankWithdrawLower.setVisible(false);
+                  BankWithdrawLabel.setVisible(false);
+                  BankWithdrawConfirm.setVisible(false);
+                  SurgeryDo.setVisible(false);
+                  CheckDo.setVisible(false);
+                  EmergencyDo.setVisible(false);
+                  SlotsOutputLabel.setVisible(false);
+                  SlotsRaise.setVisible(false);
+                  SlotsLower.setVisible(false);
+                  SlotsSpin.setVisible(false);
+                  SlotsWinningLabel.setVisible(false);
+                  SlotsBetLabel.setVisible(false);
+                  BlackBet.setVisible(false);
+                  Black1.setVisible(false);
+                  Black2.setVisible(false);
+                  Black3.setVisible(false);
+                  Black4.setVisible(false);
+                  BlackPlay.setVisible(false);
+                  BlackHit.setVisible(false);
+                  BlackStand.setVisible(false);
+                  BlackRaise.setVisible(false);
+                  BlackLower.setVisible(false);
+                  nameEnter.setVisible(false);
+                  back.setVisible(false);
+          
+                  AVJFunNight.setVisible(true);
+          
+           money = new BigDecimal("0");
+           health = 100;
+          day = 1;
+           name = "Joe Smith";
+          hours = 24;
+          bank = new BigDecimal("0");
+          job = "McDonalds";
+          ranJob = 0;
+          ranComputer = 0;
+          value = 0;
+           card1 = 0;
+          card2 = 0;
+          card3 = 0;
+          card4 = 0;
+          BlackPlayer = 0;
+           BlackComputer = 0;
+           isGame = false;
+          LastButton = "";
+          nameEnter.setVisible(true);
+          
+          
+          
+          
+                  value = 0;
+                  labelHBox.setVisible(false);
                   
+                   MoneyLabel.setText("Money on Hand: " + money);
+              DayLabel.setText("Day: " + day);
+              HoursLabel.setText("Hours Left: " + hours);
+              HealthLabel.setText("Health: " + health);
+              BankLabel.setText("Money in Account: " + bank);
+              NameLabel.setText("Name: " + name);
                 }
             }
         }else{
@@ -885,7 +1391,137 @@ toWork.setText("9 to 5 Street");
               if(day < 7){
                 day += 1;
                 } else{
+                  scene.setFill(Color.BEIGE);
+                  toWork.setVisible(false);
+                  AVJFunNight.setVisible(false);
+                  AVJFun.setVisible(false);
+                  if(hours > 12){
+                      AVJFun.setVisible(false);
+                      MoneyLabel.setTextFill(Color.BLACK);
+                      NameLabel.setTextFill(Color.BLACK);
+                      HoursLabel.setTextFill(Color.BLACK);
+                      DayLabel.setTextFill(Color.BLACK);
+                      BankLabel.setTextFill(Color.BLACK);
+                      HealthLabel.setTextFill(Color.BLACK);
+                      MoneyLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      NameLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      HoursLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      DayLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      BankLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      HealthLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                  }else{
+                      AVJFunNight.setVisible(false);
+                      MoneyLabel.setTextFill(Color.GREEN);
+                      NameLabel.setTextFill(Color.ORANGE);
+                      HoursLabel.setTextFill(Color.BLUE);
+                      DayLabel.setTextFill(Color.YELLOW);
+                      BankLabel.setTextFill(Color.GREEN);
+                      HealthLabel.setTextFill(Color.RED);
+                  }
+                  AVJWork.setVisible(false);
+                  AVJWorkNight.setVisible(false);
+                  toFun.setVisible(false);
+                  Bank.setVisible(true);
+                  Casino.setVisible(true);
+                  Hospital.setVisible(true);
+                  McD.setVisible(false);
+                  Computer.setVisible(false);
+                  Target.setVisible(false);
+                  HospitalIMG.setVisible(false);
+                  Appointment.setVisible(false);
+                  Surgery.setVisible(false);
+                  Emergency.setVisible(false);
+                  EmergencyIMG.setVisible(false);
+                  AppointmentIMG.setVisible(false);
+                  SurgeryIMG.setVisible(false);
+                  CasinoIMG.setVisible(false);
+                  Slots.setVisible(false);
+                  Blackjack.setVisible(false);
+                  Lottery.setVisible(false);
+                  SlotsIMG.setVisible(false);
+                  BlackJackIMG.setVisible(false);
+                  LotteryIMG.setVisible(false);
+                  BankIMG.setVisible(false);
+                  BankWithdrawIMG.setVisible(false);
+                  BankDepositIMG.setVisible(false);
+                  McDonaldsWorkIMG.setVisible(false);
+                  TargetApplyIMG.setVisible(false);
+                  TargetWorkIMG.setVisible(false);
+                  ComputerWorkIMG.setVisible(false);
+                  ComputerApplyIMG.setVisible(false);
+                  BankWithdraw.setVisible(false);
+                  BankDeposit.setVisible(false);
+                  McDonalds.setVisible(false);
+                  TargetApply.setVisible(false);
+                  TargetWork.setVisible(false);
+                  Computer2.setVisible(false);
+                  Computer1.setVisible(false);
+                  Computer3.setVisible(false);
+                  Computer4.setVisible(false);
+                  BankDepositRaise.setVisible(false);
+                  BankDepositLower.setVisible(false);
+                  BankDepositLabel.setVisible(false);
+                  BankDepositConfirm.setVisible(false);
+                  BankWithdrawRaise.setVisible(false);
+                  BankWithdrawLower.setVisible(false);
+                  BankWithdrawLabel.setVisible(false);
+                  BankWithdrawConfirm.setVisible(false);
+                  SurgeryDo.setVisible(false);
+                  CheckDo.setVisible(false);
+                  EmergencyDo.setVisible(false);
+                  SlotsOutputLabel.setVisible(false);
+                  SlotsRaise.setVisible(false);
+                  SlotsLower.setVisible(false);
+                  SlotsSpin.setVisible(false);
+                  SlotsWinningLabel.setVisible(false);
+                  SlotsBetLabel.setVisible(false);
+                  BlackBet.setVisible(false);
+                  Black1.setVisible(false);
+                  Black2.setVisible(false);
+                  Black3.setVisible(false);
+                  Black4.setVisible(false);
+                  BlackPlay.setVisible(false);
+                  BlackHit.setVisible(false);
+                  BlackStand.setVisible(false);
+                  BlackRaise.setVisible(false);
+                  BlackLower.setVisible(false);
+                  nameEnter.setVisible(false);
+                  back.setVisible(false);
+          
+                  AVJFunNight.setVisible(true);
+          
+           money = new BigDecimal("0");
+           health = 100;
+          day = 1;
+           name = "Joe Smith";
+          hours = 24;
+          bank = new BigDecimal("0");
+          job = "McDonalds";
+          ranJob = 0;
+          ranComputer = 0;
+          value = 0;
+           card1 = 0;
+          card2 = 0;
+          card3 = 0;
+          card4 = 0;
+          BlackPlayer = 0;
+           BlackComputer = 0;
+           isGame = false;
+          LastButton = "";
+          nameEnter.setVisible(true);
+          
+          
+          
+          
+                  value = 0;
+                  labelHBox.setVisible(false);
                   
+                   MoneyLabel.setText("Money on Hand: " + money);
+              DayLabel.setText("Day: " + day);
+              HoursLabel.setText("Hours Left: " + hours);
+              HealthLabel.setText("Health: " + health);
+              BankLabel.setText("Money in Account: " + bank);
+              NameLabel.setText("Name: " + name);
                 }
             }
         }else{
@@ -992,7 +1628,137 @@ toWork.setText("9 to 5 Street");
               if(day < 7){
                 day += 1;
                 } else{
+                  scene.setFill(Color.BEIGE);
+                  toWork.setVisible(false);
+                  AVJFunNight.setVisible(false);
+                  AVJFun.setVisible(false);
+                  if(hours > 12){
+                      AVJFun.setVisible(false);
+                      MoneyLabel.setTextFill(Color.BLACK);
+                      NameLabel.setTextFill(Color.BLACK);
+                      HoursLabel.setTextFill(Color.BLACK);
+                      DayLabel.setTextFill(Color.BLACK);
+                      BankLabel.setTextFill(Color.BLACK);
+                      HealthLabel.setTextFill(Color.BLACK);
+                      MoneyLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      NameLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      HoursLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      DayLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      BankLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      HealthLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                  }else{
+                      AVJFunNight.setVisible(false);
+                      MoneyLabel.setTextFill(Color.GREEN);
+                      NameLabel.setTextFill(Color.ORANGE);
+                      HoursLabel.setTextFill(Color.BLUE);
+                      DayLabel.setTextFill(Color.YELLOW);
+                      BankLabel.setTextFill(Color.GREEN);
+                      HealthLabel.setTextFill(Color.RED);
+                  }
+                  AVJWork.setVisible(false);
+                  AVJWorkNight.setVisible(false);
+                  toFun.setVisible(false);
+                  Bank.setVisible(true);
+                  Casino.setVisible(true);
+                  Hospital.setVisible(true);
+                  McD.setVisible(false);
+                  Computer.setVisible(false);
+                  Target.setVisible(false);
+                  HospitalIMG.setVisible(false);
+                  Appointment.setVisible(false);
+                  Surgery.setVisible(false);
+                  Emergency.setVisible(false);
+                  EmergencyIMG.setVisible(false);
+                  AppointmentIMG.setVisible(false);
+                  SurgeryIMG.setVisible(false);
+                  CasinoIMG.setVisible(false);
+                  Slots.setVisible(false);
+                  Blackjack.setVisible(false);
+                  Lottery.setVisible(false);
+                  SlotsIMG.setVisible(false);
+                  BlackJackIMG.setVisible(false);
+                  LotteryIMG.setVisible(false);
+                  BankIMG.setVisible(false);
+                  BankWithdrawIMG.setVisible(false);
+                  BankDepositIMG.setVisible(false);
+                  McDonaldsWorkIMG.setVisible(false);
+                  TargetApplyIMG.setVisible(false);
+                  TargetWorkIMG.setVisible(false);
+                  ComputerWorkIMG.setVisible(false);
+                  ComputerApplyIMG.setVisible(false);
+                  BankWithdraw.setVisible(false);
+                  BankDeposit.setVisible(false);
+                  McDonalds.setVisible(false);
+                  TargetApply.setVisible(false);
+                  TargetWork.setVisible(false);
+                  Computer2.setVisible(false);
+                  Computer1.setVisible(false);
+                  Computer3.setVisible(false);
+                  Computer4.setVisible(false);
+                  BankDepositRaise.setVisible(false);
+                  BankDepositLower.setVisible(false);
+                  BankDepositLabel.setVisible(false);
+                  BankDepositConfirm.setVisible(false);
+                  BankWithdrawRaise.setVisible(false);
+                  BankWithdrawLower.setVisible(false);
+                  BankWithdrawLabel.setVisible(false);
+                  BankWithdrawConfirm.setVisible(false);
+                  SurgeryDo.setVisible(false);
+                  CheckDo.setVisible(false);
+                  EmergencyDo.setVisible(false);
+                  SlotsOutputLabel.setVisible(false);
+                  SlotsRaise.setVisible(false);
+                  SlotsLower.setVisible(false);
+                  SlotsSpin.setVisible(false);
+                  SlotsWinningLabel.setVisible(false);
+                  SlotsBetLabel.setVisible(false);
+                  BlackBet.setVisible(false);
+                  Black1.setVisible(false);
+                  Black2.setVisible(false);
+                  Black3.setVisible(false);
+                  Black4.setVisible(false);
+                  BlackPlay.setVisible(false);
+                  BlackHit.setVisible(false);
+                  BlackStand.setVisible(false);
+                  BlackRaise.setVisible(false);
+                  BlackLower.setVisible(false);
+                  nameEnter.setVisible(false);
+                  back.setVisible(false);
+          
+                  AVJFunNight.setVisible(true);
+          
+           money = new BigDecimal("0");
+           health = 100;
+          day = 1;
+           name = "Joe Smith";
+          hours = 24;
+          bank = new BigDecimal("0");
+          job = "McDonalds";
+          ranJob = 0;
+          ranComputer = 0;
+          value = 0;
+           card1 = 0;
+          card2 = 0;
+          card3 = 0;
+          card4 = 0;
+          BlackPlayer = 0;
+           BlackComputer = 0;
+           isGame = false;
+          LastButton = "";
+          nameEnter.setVisible(true);
+          
+          
+          
+          
+                  value = 0;
+                  labelHBox.setVisible(false);
                   
+                   MoneyLabel.setText("Money on Hand: " + money);
+              DayLabel.setText("Day: " + day);
+              HoursLabel.setText("Hours Left: " + hours);
+              HealthLabel.setText("Health: " + health);
+              BankLabel.setText("Money in Account: " + bank);
+              NameLabel.setText("Name: " + name);
                 }
             }
         }else{
@@ -1099,7 +1865,137 @@ toWork.setText("9 to 5 Street");
               if(day < 7){
                 day += 1;
                 } else{
+                  scene.setFill(Color.BEIGE);
+                  toWork.setVisible(false);
+                  AVJFunNight.setVisible(false);
+                  AVJFun.setVisible(false);
+                  if(hours > 12){
+                      AVJFun.setVisible(false);
+                      MoneyLabel.setTextFill(Color.BLACK);
+                      NameLabel.setTextFill(Color.BLACK);
+                      HoursLabel.setTextFill(Color.BLACK);
+                      DayLabel.setTextFill(Color.BLACK);
+                      BankLabel.setTextFill(Color.BLACK);
+                      HealthLabel.setTextFill(Color.BLACK);
+                      MoneyLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      NameLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      HoursLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      DayLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      BankLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      HealthLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                  }else{
+                      AVJFunNight.setVisible(false);
+                      MoneyLabel.setTextFill(Color.GREEN);
+                      NameLabel.setTextFill(Color.ORANGE);
+                      HoursLabel.setTextFill(Color.BLUE);
+                      DayLabel.setTextFill(Color.YELLOW);
+                      BankLabel.setTextFill(Color.GREEN);
+                      HealthLabel.setTextFill(Color.RED);
+                  }
+                  AVJWork.setVisible(false);
+                  AVJWorkNight.setVisible(false);
+                  toFun.setVisible(false);
+                  Bank.setVisible(true);
+                  Casino.setVisible(true);
+                  Hospital.setVisible(true);
+                  McD.setVisible(false);
+                  Computer.setVisible(false);
+                  Target.setVisible(false);
+                  HospitalIMG.setVisible(false);
+                  Appointment.setVisible(false);
+                  Surgery.setVisible(false);
+                  Emergency.setVisible(false);
+                  EmergencyIMG.setVisible(false);
+                  AppointmentIMG.setVisible(false);
+                  SurgeryIMG.setVisible(false);
+                  CasinoIMG.setVisible(false);
+                  Slots.setVisible(false);
+                  Blackjack.setVisible(false);
+                  Lottery.setVisible(false);
+                  SlotsIMG.setVisible(false);
+                  BlackJackIMG.setVisible(false);
+                  LotteryIMG.setVisible(false);
+                  BankIMG.setVisible(false);
+                  BankWithdrawIMG.setVisible(false);
+                  BankDepositIMG.setVisible(false);
+                  McDonaldsWorkIMG.setVisible(false);
+                  TargetApplyIMG.setVisible(false);
+                  TargetWorkIMG.setVisible(false);
+                  ComputerWorkIMG.setVisible(false);
+                  ComputerApplyIMG.setVisible(false);
+                  BankWithdraw.setVisible(false);
+                  BankDeposit.setVisible(false);
+                  McDonalds.setVisible(false);
+                  TargetApply.setVisible(false);
+                  TargetWork.setVisible(false);
+                  Computer2.setVisible(false);
+                  Computer1.setVisible(false);
+                  Computer3.setVisible(false);
+                  Computer4.setVisible(false);
+                  BankDepositRaise.setVisible(false);
+                  BankDepositLower.setVisible(false);
+                  BankDepositLabel.setVisible(false);
+                  BankDepositConfirm.setVisible(false);
+                  BankWithdrawRaise.setVisible(false);
+                  BankWithdrawLower.setVisible(false);
+                  BankWithdrawLabel.setVisible(false);
+                  BankWithdrawConfirm.setVisible(false);
+                  SurgeryDo.setVisible(false);
+                  CheckDo.setVisible(false);
+                  EmergencyDo.setVisible(false);
+                  SlotsOutputLabel.setVisible(false);
+                  SlotsRaise.setVisible(false);
+                  SlotsLower.setVisible(false);
+                  SlotsSpin.setVisible(false);
+                  SlotsWinningLabel.setVisible(false);
+                  SlotsBetLabel.setVisible(false);
+                  BlackBet.setVisible(false);
+                  Black1.setVisible(false);
+                  Black2.setVisible(false);
+                  Black3.setVisible(false);
+                  Black4.setVisible(false);
+                  BlackPlay.setVisible(false);
+                  BlackHit.setVisible(false);
+                  BlackStand.setVisible(false);
+                  BlackRaise.setVisible(false);
+                  BlackLower.setVisible(false);
+                  nameEnter.setVisible(false);
+                  back.setVisible(false);
+          
+                  AVJFunNight.setVisible(true);
+          
+           money = new BigDecimal("0");
+           health = 100;
+          day = 1;
+           name = "Joe Smith";
+          hours = 24;
+          bank = new BigDecimal("0");
+          job = "McDonalds";
+          ranJob = 0;
+          ranComputer = 0;
+          value = 0;
+           card1 = 0;
+          card2 = 0;
+          card3 = 0;
+          card4 = 0;
+          BlackPlayer = 0;
+           BlackComputer = 0;
+           isGame = false;
+          LastButton = "";
+          nameEnter.setVisible(true);
+          
+          
+          
+          
+                  value = 0;
+                  labelHBox.setVisible(false);
                   
+                   MoneyLabel.setText("Money on Hand: " + money);
+              DayLabel.setText("Day: " + day);
+              HoursLabel.setText("Hours Left: " + hours);
+              HealthLabel.setText("Health: " + health);
+              BankLabel.setText("Money in Account: " + bank);
+              NameLabel.setText("Name: " + name);
                 }
             }
         }else{
@@ -1263,6 +2159,7 @@ toWork.setText("9 to 5 Street");
         Computer.setVisible(false);
         Target.setVisible(false);
         McDonalds.setVisible(true);
+        LastButton = "Work";
         
         MoneyLabel.setStyle("-fx-background-color:rgba(255, 255, 255,0.7);");
         NameLabel.setStyle("-fx-background-color:rgba(255, 255, 255,0.7);");
@@ -1305,7 +2202,137 @@ toWork.setText("9 to 5 Street");
           if(day < 7){
             day += 1;
             } else{
+              scene.setFill(Color.BEIGE);
+              toWork.setVisible(false);
+              AVJFunNight.setVisible(false);
+              AVJFun.setVisible(false);
+              if(hours > 12){
+                  AVJFun.setVisible(false);
+                  MoneyLabel.setTextFill(Color.BLACK);
+                  NameLabel.setTextFill(Color.BLACK);
+                  HoursLabel.setTextFill(Color.BLACK);
+                  DayLabel.setTextFill(Color.BLACK);
+                  BankLabel.setTextFill(Color.BLACK);
+                  HealthLabel.setTextFill(Color.BLACK);
+                  MoneyLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                  NameLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                  HoursLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                  DayLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                  BankLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                  HealthLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+              }else{
+                  AVJFunNight.setVisible(false);
+                  MoneyLabel.setTextFill(Color.GREEN);
+                  NameLabel.setTextFill(Color.ORANGE);
+                  HoursLabel.setTextFill(Color.BLUE);
+                  DayLabel.setTextFill(Color.YELLOW);
+                  BankLabel.setTextFill(Color.GREEN);
+                  HealthLabel.setTextFill(Color.RED);
+              }
+              AVJWork.setVisible(false);
+              AVJWorkNight.setVisible(false);
+              toFun.setVisible(false);
+              Bank.setVisible(true);
+              Casino.setVisible(true);
+              Hospital.setVisible(true);
+              McD.setVisible(false);
+              Computer.setVisible(false);
+              Target.setVisible(false);
+              HospitalIMG.setVisible(false);
+              Appointment.setVisible(false);
+              Surgery.setVisible(false);
+              Emergency.setVisible(false);
+              EmergencyIMG.setVisible(false);
+              AppointmentIMG.setVisible(false);
+              SurgeryIMG.setVisible(false);
+              CasinoIMG.setVisible(false);
+              Slots.setVisible(false);
+              Blackjack.setVisible(false);
+              Lottery.setVisible(false);
+              SlotsIMG.setVisible(false);
+              BlackJackIMG.setVisible(false);
+              LotteryIMG.setVisible(false);
+              BankIMG.setVisible(false);
+              BankWithdrawIMG.setVisible(false);
+              BankDepositIMG.setVisible(false);
+              McDonaldsWorkIMG.setVisible(false);
+              TargetApplyIMG.setVisible(false);
+              TargetWorkIMG.setVisible(false);
+              ComputerWorkIMG.setVisible(false);
+              ComputerApplyIMG.setVisible(false);
+              BankWithdraw.setVisible(false);
+              BankDeposit.setVisible(false);
+              McDonalds.setVisible(false);
+              TargetApply.setVisible(false);
+              TargetWork.setVisible(false);
+              Computer2.setVisible(false);
+              Computer1.setVisible(false);
+              Computer3.setVisible(false);
+              Computer4.setVisible(false);
+              BankDepositRaise.setVisible(false);
+              BankDepositLower.setVisible(false);
+              BankDepositLabel.setVisible(false);
+              BankDepositConfirm.setVisible(false);
+              BankWithdrawRaise.setVisible(false);
+              BankWithdrawLower.setVisible(false);
+              BankWithdrawLabel.setVisible(false);
+              BankWithdrawConfirm.setVisible(false);
+              SurgeryDo.setVisible(false);
+              CheckDo.setVisible(false);
+              EmergencyDo.setVisible(false);
+              SlotsOutputLabel.setVisible(false);
+              SlotsRaise.setVisible(false);
+              SlotsLower.setVisible(false);
+              SlotsSpin.setVisible(false);
+              SlotsWinningLabel.setVisible(false);
+              SlotsBetLabel.setVisible(false);
+              BlackBet.setVisible(false);
+              Black1.setVisible(false);
+              Black2.setVisible(false);
+              Black3.setVisible(false);
+              Black4.setVisible(false);
+              BlackPlay.setVisible(false);
+              BlackHit.setVisible(false);
+              BlackStand.setVisible(false);
+              BlackRaise.setVisible(false);
+              BlackLower.setVisible(false);
+              nameEnter.setVisible(false);
+              back.setVisible(false);
+      
+              AVJFunNight.setVisible(true);
+      
+       money = new BigDecimal("0");
+       health = 100;
+      day = 1;
+       name = "Joe Smith";
+      hours = 24;
+      bank = new BigDecimal("0");
+      job = "McDonalds";
+      ranJob = 0;
+      ranComputer = 0;
+      value = 0;
+       card1 = 0;
+      card2 = 0;
+      card3 = 0;
+      card4 = 0;
+      BlackPlayer = 0;
+       BlackComputer = 0;
+       isGame = false;
+      LastButton = "";
+      nameEnter.setVisible(true);
+      
+      
+      
+      
+              value = 0;
+              labelHBox.setVisible(false);
               
+               MoneyLabel.setText("Money on Hand: " + money);
+          DayLabel.setText("Day: " + day);
+          HoursLabel.setText("Hours Left: " + hours);
+          HealthLabel.setText("Health: " + health);
+          BankLabel.setText("Money in Account: " + bank);
+          NameLabel.setText("Name: " + name);
             }
         }
 
@@ -1404,7 +2431,137 @@ toWork.setText("9 to 5 Street");
               if(day < 7){
                 day += 1;
                 } else{
+                  scene.setFill(Color.BEIGE);
+                  toWork.setVisible(false);
+                  AVJFunNight.setVisible(false);
+                  AVJFun.setVisible(false);
+                  if(hours > 12){
+                      AVJFun.setVisible(false);
+                      MoneyLabel.setTextFill(Color.BLACK);
+                      NameLabel.setTextFill(Color.BLACK);
+                      HoursLabel.setTextFill(Color.BLACK);
+                      DayLabel.setTextFill(Color.BLACK);
+                      BankLabel.setTextFill(Color.BLACK);
+                      HealthLabel.setTextFill(Color.BLACK);
+                      MoneyLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      NameLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      HoursLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      DayLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      BankLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                      HealthLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+                  }else{
+                      AVJFunNight.setVisible(false);
+                      MoneyLabel.setTextFill(Color.GREEN);
+                      NameLabel.setTextFill(Color.ORANGE);
+                      HoursLabel.setTextFill(Color.BLUE);
+                      DayLabel.setTextFill(Color.YELLOW);
+                      BankLabel.setTextFill(Color.GREEN);
+                      HealthLabel.setTextFill(Color.RED);
+                  }
+                  AVJWork.setVisible(false);
+                  AVJWorkNight.setVisible(false);
+                  toFun.setVisible(false);
+                  Bank.setVisible(true);
+                  Casino.setVisible(true);
+                  Hospital.setVisible(true);
+                  McD.setVisible(false);
+                  Computer.setVisible(false);
+                  Target.setVisible(false);
+                  HospitalIMG.setVisible(false);
+                  Appointment.setVisible(false);
+                  Surgery.setVisible(false);
+                  Emergency.setVisible(false);
+                  EmergencyIMG.setVisible(false);
+                  AppointmentIMG.setVisible(false);
+                  SurgeryIMG.setVisible(false);
+                  CasinoIMG.setVisible(false);
+                  Slots.setVisible(false);
+                  Blackjack.setVisible(false);
+                  Lottery.setVisible(false);
+                  SlotsIMG.setVisible(false);
+                  BlackJackIMG.setVisible(false);
+                  LotteryIMG.setVisible(false);
+                  BankIMG.setVisible(false);
+                  BankWithdrawIMG.setVisible(false);
+                  BankDepositIMG.setVisible(false);
+                  McDonaldsWorkIMG.setVisible(false);
+                  TargetApplyIMG.setVisible(false);
+                  TargetWorkIMG.setVisible(false);
+                  ComputerWorkIMG.setVisible(false);
+                  ComputerApplyIMG.setVisible(false);
+                  BankWithdraw.setVisible(false);
+                  BankDeposit.setVisible(false);
+                  McDonalds.setVisible(false);
+                  TargetApply.setVisible(false);
+                  TargetWork.setVisible(false);
+                  Computer2.setVisible(false);
+                  Computer1.setVisible(false);
+                  Computer3.setVisible(false);
+                  Computer4.setVisible(false);
+                  BankDepositRaise.setVisible(false);
+                  BankDepositLower.setVisible(false);
+                  BankDepositLabel.setVisible(false);
+                  BankDepositConfirm.setVisible(false);
+                  BankWithdrawRaise.setVisible(false);
+                  BankWithdrawLower.setVisible(false);
+                  BankWithdrawLabel.setVisible(false);
+                  BankWithdrawConfirm.setVisible(false);
+                  SurgeryDo.setVisible(false);
+                  CheckDo.setVisible(false);
+                  EmergencyDo.setVisible(false);
+                  SlotsOutputLabel.setVisible(false);
+                  SlotsRaise.setVisible(false);
+                  SlotsLower.setVisible(false);
+                  SlotsSpin.setVisible(false);
+                  SlotsWinningLabel.setVisible(false);
+                  SlotsBetLabel.setVisible(false);
+                  BlackBet.setVisible(false);
+                  Black1.setVisible(false);
+                  Black2.setVisible(false);
+                  Black3.setVisible(false);
+                  Black4.setVisible(false);
+                  BlackPlay.setVisible(false);
+                  BlackHit.setVisible(false);
+                  BlackStand.setVisible(false);
+                  BlackRaise.setVisible(false);
+                  BlackLower.setVisible(false);
+                  nameEnter.setVisible(false);
+                  back.setVisible(false);
+          
+                  AVJFunNight.setVisible(true);
+          
+           money = new BigDecimal("0");
+           health = 100;
+          day = 1;
+           name = "Joe Smith";
+          hours = 24;
+          bank = new BigDecimal("0");
+          job = "McDonalds";
+          ranJob = 0;
+          ranComputer = 0;
+          value = 0;
+           card1 = 0;
+          card2 = 0;
+          card3 = 0;
+          card4 = 0;
+          BlackPlayer = 0;
+           BlackComputer = 0;
+           isGame = false;
+          LastButton = "";
+          nameEnter.setVisible(true);
+          
+          
+          
+          
+                  value = 0;
+                  labelHBox.setVisible(false);
                   
+                   MoneyLabel.setText("Money on Hand: " + money);
+              DayLabel.setText("Day: " + day);
+              HoursLabel.setText("Hours Left: " + hours);
+              HealthLabel.setText("Health: " + health);
+              BankLabel.setText("Money in Account: " + bank);
+              NameLabel.setText("Name: " + name);
                 }
             }
         }else{
@@ -1940,7 +3097,7 @@ toWork.setText("9 to 5 Street");
 
     SlotsWinningLabel.setStyle("-fx-background-color: #ffffff00");
     SlotsWinningLabel.setTranslateX(350);
-    SlotsWinningLabel.setTranslateY(310);
+    SlotsWinningLabel.setTranslateY(313);
     SlotsWinningLabel.setPrefWidth(100);
     SlotsWinningLabel.setPrefHeight(10);
     SlotsWinningLabel.setVisible(false);
@@ -2211,7 +3368,7 @@ toWork.setText("9 to 5 Street");
     back.setPrefHeight(25);
     back.setTextFill(Color.WHITE);
     back.setFont(Font.font("Comic Sans MS", FontWeight.BOLD, FontPosture.REGULAR, 20));
-    back.setVisible(true);
+    back.setVisible(false);
     back.setOnAction(new EventHandler<ActionEvent>() {
       @Override public void handle(ActionEvent e) {
         scene.setFill(Color.BEIGE);
