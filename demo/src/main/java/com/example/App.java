@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.*;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -46,6 +48,13 @@ public class App extends Application {
   public static int ranJob = 0;
   public static int ranComputer = 0;
   public static int value = 0;
+  public static int card1;
+  public static int card2;
+  public static int card3;
+  public static int card4;
+  public static int BlackPlayer;
+  public static int BlackComputer;
+  public static boolean isGame;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -1931,7 +1940,7 @@ toWork.setText("9 to 5 Street");
 
     SlotsWinningLabel.setStyle("-fx-background-color: #ffffff00");
     SlotsWinningLabel.setTranslateX(350);
-    SlotsWinningLabel.setTranslateY(320);
+    SlotsWinningLabel.setTranslateY(310);
     SlotsWinningLabel.setPrefWidth(100);
     SlotsWinningLabel.setPrefHeight(10);
     SlotsWinningLabel.setVisible(false);
@@ -2017,15 +2026,19 @@ toWork.setText("9 to 5 Street");
     BlackPlay.setOnAction(new EventHandler<ActionEvent>() {
       @Override public void handle(ActionEvent e) {
         BigDecimal valueBig = new BigDecimal(value);
+        Black1.setText("");
+          Black2.setText("");
+          Black3.setText("");
+          Black4.setText("");
         if(money.compareTo(valueBig) >= 0){
-          int card1 = (int)(Math.random()*11)+1;
+          money = money.subtract(valueBig);
+          isGame = true;
+           card1 = (int)(Math.random()*11)+1;
           Black1.setText("" + card1);
-          int card2 = (int)(Math.random()*11)+1;
+           card2 = (int)(Math.random()*11)+1;
           Black2.setText("" + card2);
-          int card3 = (int)(Math.random()*11)+1;
+           card3 = (int)(Math.random()*11)+1;
           Black3.setText("" + card3);
-          int card4 = (int)(Math.random()*11)+1;
-          Black4.setText("" + card4);
         }
         
         MoneyLabel.setText("Money on Hand: " + money);
@@ -2090,15 +2103,14 @@ toWork.setText("9 to 5 Street");
     BlackHit.setVisible(false);
     BlackHit.setOnAction(new EventHandler<ActionEvent>() {
       @Override public void handle(ActionEvent e) {
-        BigDecimal emer = new BigDecimal("100000");
-        if(money.compareTo(emer) >= 0){
-          money = money.subtract(emer);
-          hours -= 2;
-          health += 60;
-          if(health > 100){
-            health = 100;
-          }
-        }else{}
+        if(isGame){
+          BlackPlayer = card1 + card3;
+          card1 += card3;
+          Black1.setText("" + BlackPlayer);
+          card3 = (int)(Math.random()*11)+1;
+         Black3.setText("" + card3);
+
+        }
         
         MoneyLabel.setText("Money on Hand: " + money);
    DayLabel.setText("Day: " + day);
@@ -2117,15 +2129,30 @@ toWork.setText("9 to 5 Street");
     BlackStand.setVisible(false);
     BlackStand.setOnAction(new EventHandler<ActionEvent>() {
       @Override public void handle(ActionEvent e) {
-        BigDecimal emer = new BigDecimal("100000");
-        if(money.compareTo(emer) >= 0){
-          money = money.subtract(emer);
-          hours -= 2;
-          health += 60;
-          if(health > 100){
-            health = 100;
-          }
-        }else{}
+        if(isGame){
+          BigDecimal valueBig = new BigDecimal(value*2);
+        BlackPlayer = card1 + card3;
+        card4 = (int)(Math.random()*11)+1;
+        Black4.setText(""+card4);
+        BlackComputer = card2 + card4;
+        while(BlackComputer < 17){
+          card2 += card4;
+        card4 = (int)(Math.random()*11)+1;
+        Black4.setText(""+card4);
+        Black2.setText(""+card2);
+        BlackComputer = card2 + card4;
+        }
+         
+        if(BlackComputer > 21 || (BlackComputer < BlackPlayer && BlackPlayer < 21)){
+          money = money.add(valueBig);
+          isGame = false;
+        }else if(BlackComputer == BlackPlayer){
+          BigDecimal valueLit = new BigDecimal(value);
+          money = money.add(valueLit);
+          isGame = false;
+        } else {isGame = false;}
+        }
+        
         
         MoneyLabel.setText("Money on Hand: " + money);
    DayLabel.setText("Day: " + day);
@@ -2163,16 +2190,16 @@ toWork.setText("9 to 5 Street");
     Black3.setStyle("-fx-background-color: #ffffff00");
     Black3.setTranslateX(380);
     Black3.setTranslateY(545);
-    Black3.setPrefWidth(160);
-    Black3.setPrefHeight(10);
+    Black3.setPrefWidth(50);
+    Black3.setPrefHeight(50);
     Black3.setVisible(false);
     Black3.setFont(Font.font("Comic Sans MS", FontPosture.REGULAR, 20));
 
     Black4.setStyle("-fx-background-color: #ffffff00");
     Black4.setTranslateX(380);
     Black4.setTranslateY(470);
-    Black4.setPrefWidth(160);
-    Black4.setPrefHeight(10);
+    Black4.setPrefWidth(50);
+    Black4.setPrefHeight(50);
     Black4.setVisible(false);
     Black4.setFont(Font.font("Comic Sans MS", FontPosture.REGULAR, 20));
 
