@@ -56,6 +56,7 @@ public class App extends Application {
   public static int BlackComputer;
   public static boolean isGame;
   public static String LastButton = "";
+  public static int LotValue = 0;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -112,6 +113,9 @@ public class App extends Application {
     Button BlackLower = new Button();
     Button BlackHit = new Button();
     Button BlackStand = new Button();
+    Button LotLower = new Button();
+    Button LotRaise = new Button();
+    Button LotGet = new Button();
 
 
     Button BankWithdrawLabel = new Button();
@@ -124,6 +128,7 @@ public class App extends Application {
     Button Black2 = new Button();
     Button Black3 = new Button();
     Button Black4 = new Button();
+    Button LotLabel = new Button();
 
 
         //Creating an image 
@@ -312,7 +317,7 @@ public class App extends Application {
     
       //Setting the stage
     
-     Group root = new Group(AVJFun, AVJFunNight, nameEnter, AVJWork, AVJWorkNight,toWork, toFun, Hospital, Casino, Bank, Computer,  Target,  McD, CasinoIMG, Slots, Blackjack, Lottery, SlotsIMG, BlackJackIMG, LotteryIMG, EmergencyIMG, AppointmentIMG, SurgeryIMG, HospitalIMG,  Appointment, Surgery, Emergency, McDonaldsWorkIMG, TargetApplyIMG, TargetWorkIMG, ComputerApplyIMG, ComputerWorkIMG, BankIMG, BankWithdrawIMG, BankDepositIMG, BankWithdraw, BankDeposit, BankWithdrawRaise, BankWithdrawLower,BankWithdrawLabel, BankDepositRaise, BankDepositLower, BankDepositLabel,BankDepositConfirm, BankWithdrawConfirm, Computer1,Computer2, Computer3, Computer4, McDonalds,  EmergencyDo, CheckDo, TargetWork, TargetApply, SurgeryDo, SlotsOutputLabel, SlotsRaise, SlotsLower, SlotsSpin, SlotsWinningLabel, SlotsBetLabel, Black1, Black2, Black3, Black4, BlackBet, BlackPlay, BlackRaise, BlackLower, BlackHit, BlackStand, back, labelHBox);
+     Group root = new Group(AVJFun, AVJFunNight, nameEnter, AVJWork, AVJWorkNight,toWork, toFun, Hospital, Casino, Bank, Computer,  Target,  McD, CasinoIMG, Slots, Blackjack, Lottery, SlotsIMG, BlackJackIMG, LotteryIMG, EmergencyIMG, AppointmentIMG, SurgeryIMG, HospitalIMG,  Appointment, Surgery, Emergency, McDonaldsWorkIMG, TargetApplyIMG, TargetWorkIMG, ComputerApplyIMG, ComputerWorkIMG, BankIMG, BankWithdrawIMG, BankDepositIMG, BankWithdraw, BankDeposit, BankWithdrawRaise, BankWithdrawLower,BankWithdrawLabel, BankDepositRaise, BankDepositLower, BankDepositLabel,BankDepositConfirm, BankWithdrawConfirm, Computer1,Computer2, Computer3, Computer4, McDonalds,  EmergencyDo, CheckDo, TargetWork, TargetApply, SurgeryDo, SlotsOutputLabel, SlotsRaise, SlotsLower, SlotsSpin, SlotsWinningLabel, SlotsBetLabel, Black1, Black2, Black3, Black4, BlackBet, BlackPlay, BlackRaise, BlackLower, BlackHit, BlackStand, LotLabel, LotLower, LotRaise, LotGet, back, labelHBox);
       Scene scene = new Scene(root, 800, 600, Color.BEIGE);
       stage.setTitle("Main Screen");
       stage.setScene(scene);
@@ -524,6 +529,12 @@ toWork.setText("9 to 5 Street");
           hours = 24;
           if(day < 7){
           day += 1;
+          int chance = (int)(Math.random()*10);
+          if(chance == 3){
+            BigDecimal winner = new BigDecimal(LotValue);
+            money = money.add(winner);
+            LotValue = 0;
+          }
           } else{
 
             scene.setFill(Color.BEIGE);
@@ -642,6 +653,7 @@ card4 = 0;
 BlackPlayer = 0;
  BlackComputer = 0;
  isGame = false;
+ LotValue = 0;
 LastButton = "";
 nameEnter.setVisible(true);
 
@@ -718,6 +730,12 @@ nameEnter.setVisible(true);
           hours = 24;
           if(day < 7){
           day += 1;
+          int chance = (int)(Math.random()*10);
+          if(chance == 3){
+            BigDecimal winner = new BigDecimal(LotValue);
+            money = money.add(winner);
+            LotValue = 0;
+          }
           } else{
 
             scene.setFill(Color.BEIGE);
@@ -836,6 +854,7 @@ nameEnter.setVisible(true);
     BlackPlayer = 0;
      BlackComputer = 0;
      isGame = false;
+     LotValue = 0;
     LastButton = "";
     nameEnter.setVisible(true);
     
@@ -1153,6 +1172,12 @@ nameEnter.setVisible(true);
               hours = 24;
               if(day < 7){
                 day += 1;
+                int chance = (int)(Math.random()*10);
+                if(chance == 3){
+                  BigDecimal winner = new BigDecimal(LotValue);
+                  money = money.add(winner);
+                  LotValue = 0;
+                }
                 } else{
                   scene.setFill(Color.BEIGE);
                   toWork.setVisible(false);
@@ -1270,6 +1295,7 @@ nameEnter.setVisible(true);
           BlackPlayer = 0;
            BlackComputer = 0;
            isGame = false;
+           LotValue = 0;
           LastButton = "";
           nameEnter.setVisible(true);
           
@@ -1390,6 +1416,12 @@ nameEnter.setVisible(true);
               hours = 24;
               if(day < 7){
                 day += 1;
+                int chance = (int)(Math.random()*10);
+                if(chance == 3){
+                  BigDecimal winner = new BigDecimal(LotValue);
+                  money = money.add(winner);
+                  LotValue = 0;
+                }
                 } else{
                   scene.setFill(Color.BEIGE);
                   toWork.setVisible(false);
@@ -1507,6 +1539,7 @@ nameEnter.setVisible(true);
           BlackPlayer = 0;
            BlackComputer = 0;
            isGame = false;
+           LotValue = 0;
           LastButton = "";
           nameEnter.setVisible(true);
           
@@ -1627,6 +1660,12 @@ nameEnter.setVisible(true);
               hours = 24;
               if(day < 7){
                 day += 1;
+                int chance = (int)(Math.random()*10);
+                if(chance == 3){
+                  BigDecimal winner = new BigDecimal(LotValue);
+                  money = money.add(winner);
+                  LotValue = 0;
+                }
                 } else{
                   scene.setFill(Color.BEIGE);
                   toWork.setVisible(false);
@@ -1744,6 +1783,7 @@ nameEnter.setVisible(true);
           BlackPlayer = 0;
            BlackComputer = 0;
            isGame = false;
+           LotValue = 0;
           LastButton = "";
           nameEnter.setVisible(true);
           
@@ -1864,6 +1904,12 @@ nameEnter.setVisible(true);
               hours = 24;
               if(day < 7){
                 day += 1;
+                int chance = (int)(Math.random()*10);
+                if(chance == 3){
+                  BigDecimal winner = new BigDecimal(LotValue);
+                  money = money.add(winner);
+                  LotValue = 0;
+                }
                 } else{
                   scene.setFill(Color.BEIGE);
                   toWork.setVisible(false);
@@ -1982,6 +2028,7 @@ nameEnter.setVisible(true);
            BlackComputer = 0;
            isGame = false;
           LastButton = "";
+          LotValue = 0;
           nameEnter.setVisible(true);
           
           
@@ -2201,6 +2248,12 @@ nameEnter.setVisible(true);
           hours = 24;
           if(day < 7){
             day += 1;
+            int chance = (int)(Math.random()*10);
+            if(chance == 3){
+              BigDecimal winner = new BigDecimal(LotValue);
+              money = money.add(winner);
+              LotValue = 0;
+            }
             } else{
               scene.setFill(Color.BEIGE);
               toWork.setVisible(false);
@@ -2318,6 +2371,7 @@ nameEnter.setVisible(true);
       BlackPlayer = 0;
        BlackComputer = 0;
        isGame = false;
+       LotValue = 0;
       LastButton = "";
       nameEnter.setVisible(true);
       
@@ -2430,6 +2484,12 @@ nameEnter.setVisible(true);
               hours = 24;
               if(day < 7){
                 day += 1;
+                int chance = (int)(Math.random()*10);
+                if(chance == 3){
+                  BigDecimal winner = new BigDecimal(LotValue);
+                  money = money.add(winner);
+                  LotValue = 0;
+                }
                 } else{
                   scene.setFill(Color.BEIGE);
                   toWork.setVisible(false);
@@ -2547,6 +2607,7 @@ nameEnter.setVisible(true);
           BlackPlayer = 0;
            BlackComputer = 0;
            isGame = false;
+           LotValue = 0;
           LastButton = "";
           nameEnter.setVisible(true);
           
@@ -2732,6 +2793,11 @@ nameEnter.setVisible(true);
         LotteryIMG.setVisible(true);
         back.setVisible(true);
         labelHBox.setVisible(true);
+        LotGet.setVisible(true);
+        LotLower.setVisible(true);
+        LotRaise.setVisible(true);
+        LotLabel.setVisible(true);
+
 
 
          MoneyLabel.setText("Money on Hand: " + money);
@@ -3360,6 +3426,67 @@ nameEnter.setVisible(true);
     Black4.setVisible(false);
     Black4.setFont(Font.font("Comic Sans MS", FontPosture.REGULAR, 20));
 
+
+    LotLabel.setStyle("-fx-background-color: #ffffff00");
+    LotLabel.setTranslateX(300);
+    LotLabel.setTranslateY(160);
+    LotLabel.setPrefWidth(200);
+    LotLabel.setPrefHeight(10);
+    LotLabel.setVisible(false);
+    LotLabel.setFont(Font.font("Comic Sans MS", FontPosture.REGULAR, 30));
+    LotLabel.setTextFill(Color.CHARTREUSE);
+
+    LotRaise.setStyle("-fx-background-color: #ffffff00");
+    LotRaise.setTranslateX(300);
+    LotRaise.setTranslateY(285);
+    LotRaise.setPrefWidth(150);
+    LotRaise.setPrefHeight(50);
+    LotRaise.setVisible(false);
+    LotRaise.setOnAction(new EventHandler<ActionEvent>() {
+      @Override public void handle(ActionEvent e) {
+        BigDecimal valueBig = new BigDecimal(value);
+        if(money.compareTo(valueBig) > 0){
+          value += 1000;
+          LotLabel.setText("" + value);
+        }
+      }
+    });
+    LotLower.setStyle("-fx-background-color: #ffffff00");
+    LotLower.setTranslateX(300);
+    LotLower.setTranslateY(335);
+    LotLower.setPrefWidth(150);
+    LotLower.setPrefHeight(50);
+    LotLower.setVisible(false);
+    LotLower.setOnAction(new EventHandler<ActionEvent>() {
+      @Override public void handle(ActionEvent e) {
+        if(value >0){
+          value -= 1000;
+          LotLabel.setText("" + value);
+        }
+      }
+    });
+    LotGet.setStyle("-fx-background-color: #ffffff00");
+    LotGet.setTranslateX(300);
+    LotGet.setTranslateY(235);
+    LotGet.setPrefWidth(150);
+    LotGet.setPrefHeight(50);
+    LotGet.setVisible(false);
+    LotGet.setOnAction(new EventHandler<ActionEvent>() {
+      @Override public void handle(ActionEvent e) {
+        BigDecimal valueBig = new BigDecimal(value);
+        if(money.compareTo(valueBig) >= 0){
+        money = money.subtract(valueBig);
+        LotValue = value*100;
+        }
+        MoneyLabel.setText("Money on Hand: " + money);
+   DayLabel.setText("Day: " + day);
+   HoursLabel.setText("Hours Left: " + hours);
+   HealthLabel.setText("Health: " + health);
+   BankLabel.setText("Money in Account: " + bank);
+   NameLabel.setText("Name: " + name);
+      }
+      });
+
     back.setText("Back");
     back.setStyle("-fx-border: 120px solid; -fx-background-color: #990000; -fx-border-color: #ffffff");
       back.setTranslateX(10);
@@ -3465,6 +3592,11 @@ nameEnter.setVisible(true);
         BlackStand.setVisible(false);
         BlackRaise.setVisible(false);
         BlackLower.setVisible(false);
+        LotGet.setVisible(false);
+        LotLower.setVisible(false);
+        LotRaise.setVisible(false);
+        LotLabel.setVisible(false);
+
 
 
 
@@ -3475,6 +3607,12 @@ nameEnter.setVisible(true);
         if(hours < 6){
           hours = 24;
           day += 1;
+          int chance = (int)(Math.random()*10);
+          if(chance == 3){
+            BigDecimal winner = new BigDecimal(LotValue);
+            money = money.add(winner);
+            LotValue = 0;
+          }
         }
          MoneyLabel.setText("Money on Hand: " + money);
     DayLabel.setText("Day: " + day);
