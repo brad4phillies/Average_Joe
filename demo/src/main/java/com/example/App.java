@@ -116,6 +116,7 @@ public class App extends Application {
     Button LotLower = new Button();
     Button LotRaise = new Button();
     Button LotGet = new Button();
+    Button ComputerApply = new Button();
 
 
     Button BankWithdrawLabel = new Button();
@@ -317,7 +318,7 @@ public class App extends Application {
     
       //Setting the stage
     
-     Group root = new Group(AVJFun, AVJFunNight, nameEnter, AVJWork, AVJWorkNight,toWork, toFun, Hospital, Casino, Bank, Computer,  Target,  McD, CasinoIMG, Slots, Blackjack, Lottery, SlotsIMG, BlackJackIMG, LotteryIMG, EmergencyIMG, AppointmentIMG, SurgeryIMG, HospitalIMG,  Appointment, Surgery, Emergency, McDonaldsWorkIMG, TargetApplyIMG, TargetWorkIMG, ComputerApplyIMG, ComputerWorkIMG, BankIMG, BankWithdrawIMG, BankDepositIMG, BankWithdraw, BankDeposit, BankWithdrawRaise, BankWithdrawLower,BankWithdrawLabel, BankDepositRaise, BankDepositLower, BankDepositLabel,BankDepositConfirm, BankWithdrawConfirm, Computer1,Computer2, Computer3, Computer4, McDonalds,  EmergencyDo, CheckDo, TargetWork, TargetApply, SurgeryDo, SlotsOutputLabel, SlotsRaise, SlotsLower, SlotsSpin, SlotsWinningLabel, SlotsBetLabel, Black1, Black2, Black3, Black4, BlackBet, BlackPlay, BlackRaise, BlackLower, BlackHit, BlackStand, LotLabel, LotLower, LotRaise, LotGet, back, labelHBox);
+     Group root = new Group(AVJFun, AVJFunNight, nameEnter, AVJWork, AVJWorkNight,toWork, toFun, Hospital, Casino, Bank, Computer,  Target,  McD, CasinoIMG, Slots, Blackjack, Lottery, SlotsIMG, BlackJackIMG, LotteryIMG, EmergencyIMG, AppointmentIMG, SurgeryIMG, HospitalIMG,  Appointment, Surgery, Emergency, McDonaldsWorkIMG, TargetApplyIMG, TargetWorkIMG, ComputerApplyIMG, ComputerWorkIMG, BankIMG, BankWithdrawIMG, BankDepositIMG, BankWithdraw, BankDeposit, BankWithdrawRaise, BankWithdrawLower,BankWithdrawLabel, BankDepositRaise, BankDepositLower, BankDepositLabel,BankDepositConfirm, BankWithdrawConfirm, Computer1,Computer2, Computer3, Computer4, McDonalds,  EmergencyDo, CheckDo, TargetWork, TargetApply, ComputerApply, SurgeryDo, SlotsOutputLabel, SlotsRaise, SlotsLower, SlotsSpin, SlotsWinningLabel, SlotsBetLabel, Black1, Black2, Black3, Black4, BlackBet, BlackPlay, BlackRaise, BlackLower, BlackHit, BlackStand, LotLabel, LotLower, LotRaise, LotGet, back, labelHBox);
       Scene scene = new Scene(root, 800, 600, Color.BEIGE);
       stage.setTitle("Main Screen");
       stage.setScene(scene);
@@ -567,9 +568,9 @@ toWork.setText("9 to 5 Street");
         AVJWork.setVisible(false);
         AVJWorkNight.setVisible(false);
         toFun.setVisible(false);
-        Bank.setVisible(true);
-        Casino.setVisible(true);
-        Hospital.setVisible(true);
+        Bank.setVisible(false);
+        Casino.setVisible(false);
+        Hospital.setVisible(false);
         McD.setVisible(false);
         Computer.setVisible(false);
         Target.setVisible(false);
@@ -601,6 +602,7 @@ toWork.setText("9 to 5 Street");
         TargetApply.setVisible(false);
         TargetWork.setVisible(false);
         Computer2.setVisible(false);
+        toWork.setVisible(false);
         Computer1.setVisible(false);
         Computer3.setVisible(false);
         Computer4.setVisible(false);
@@ -768,9 +770,10 @@ nameEnter.setVisible(true);
             AVJWork.setVisible(false);
             AVJWorkNight.setVisible(false);
             toFun.setVisible(false);
-            Bank.setVisible(true);
-            Casino.setVisible(true);
-            Hospital.setVisible(true);
+            toWork.setVisible(false);
+            Bank.setVisible(false);
+            Casino.setVisible(false);
+            Hospital.setVisible(false);
             McD.setVisible(false);
             Computer.setVisible(false);
             Target.setVisible(false);
@@ -1122,6 +1125,7 @@ nameEnter.setVisible(true);
         Computer4.setVisible(true);
         }else{
         ComputerApplyIMG.setVisible(true);
+        ComputerApply.setVisible(true);
         }
 
         toWork.setVisible(false);
@@ -1149,6 +1153,138 @@ nameEnter.setVisible(true);
    BankLabel.setText("Money in Account: " + bank);
    NameLabel.setText("Name: " + name);
         
+      }
+    }); ComputerApply.setStyle("-fx-background-color: #ffffff00");
+    ComputerApply.setTranslateX(10);
+    ComputerApply.setTranslateY(100);
+    ComputerApply.setPrefWidth(780);
+    ComputerApply.setPrefHeight(400);
+    ComputerApply.setVisible(false);
+    ComputerApply.setOnAction(new EventHandler<ActionEvent>() {
+      @Override public void handle(ActionEvent e) {
+        scene.setFill(Color.BEIGE);
+        toWork.setVisible(true);
+        AVJFunNight.setVisible(false);
+        AVJFun.setVisible(false);
+        if(hours > 12){
+            AVJFun.setVisible(true);
+            MoneyLabel.setTextFill(Color.BLACK);
+            NameLabel.setTextFill(Color.BLACK);
+            HoursLabel.setTextFill(Color.BLACK);
+            DayLabel.setTextFill(Color.BLACK);
+            BankLabel.setTextFill(Color.BLACK);
+            HealthLabel.setTextFill(Color.BLACK);
+            MoneyLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            NameLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            HoursLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            DayLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            BankLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+            HealthLabel.setStyle("-fx-background-color:rgba(0, 0, 255,0);");
+        }else{
+            AVJFunNight.setVisible(true);
+            MoneyLabel.setTextFill(Color.GREEN);
+            NameLabel.setTextFill(Color.ORANGE);
+            HoursLabel.setTextFill(Color.BLUE);
+            DayLabel.setTextFill(Color.YELLOW);
+            BankLabel.setTextFill(Color.GREEN);
+            HealthLabel.setTextFill(Color.RED);
+        }
+        AVJWork.setVisible(false);
+        AVJWorkNight.setVisible(false);
+        toFun.setVisible(false);
+        Bank.setVisible(true);
+        Casino.setVisible(true);
+        Hospital.setVisible(true);
+        McD.setVisible(false);
+        Computer.setVisible(false);
+        Target.setVisible(false);
+        HospitalIMG.setVisible(false);
+        Appointment.setVisible(false);
+        Surgery.setVisible(false);
+        Emergency.setVisible(false);
+        EmergencyIMG.setVisible(false);
+        AppointmentIMG.setVisible(false);
+        SurgeryIMG.setVisible(false);
+        CasinoIMG.setVisible(false);
+        Slots.setVisible(false);
+        Blackjack.setVisible(false);
+        Lottery.setVisible(false);
+        SlotsIMG.setVisible(false);
+        BlackJackIMG.setVisible(false);
+        LotteryIMG.setVisible(false);
+        BankIMG.setVisible(false);
+        BankWithdrawIMG.setVisible(false);
+        BankDepositIMG.setVisible(false);
+        McDonaldsWorkIMG.setVisible(false);
+        TargetApplyIMG.setVisible(false);
+        TargetWorkIMG.setVisible(false);
+        ComputerWorkIMG.setVisible(false);
+        ComputerApplyIMG.setVisible(false);
+        BankWithdraw.setVisible(false);
+        BankDeposit.setVisible(false);
+        McDonalds.setVisible(false);
+        TargetApply.setVisible(false);
+        TargetWork.setVisible(false);
+        Computer2.setVisible(false);
+        Computer1.setVisible(false);
+        Computer3.setVisible(false);
+        Computer4.setVisible(false);
+        BankDepositRaise.setVisible(false);
+        BankDepositLower.setVisible(false);
+        BankDepositLabel.setVisible(false);
+        BankDepositConfirm.setVisible(false);
+        BankWithdrawRaise.setVisible(false);
+        BankWithdrawLower.setVisible(false);
+        BankWithdrawLabel.setVisible(false);
+        BankWithdrawConfirm.setVisible(false);
+        SurgeryDo.setVisible(false);
+        CheckDo.setVisible(false);
+        EmergencyDo.setVisible(false);
+        SlotsOutputLabel.setVisible(false);
+        SlotsRaise.setVisible(false);
+        SlotsLower.setVisible(false);
+        SlotsSpin.setVisible(false);
+        SlotsWinningLabel.setVisible(false);
+        SlotsBetLabel.setVisible(false);
+        BlackBet.setVisible(false);
+        Black1.setVisible(false);
+        Black2.setVisible(false);
+        Black3.setVisible(false);
+        Black4.setVisible(false);
+        BlackPlay.setVisible(false);
+        BlackHit.setVisible(false);
+        BlackStand.setVisible(false);
+        BlackRaise.setVisible(false);
+        BlackLower.setVisible(false);
+        LotGet.setVisible(false);
+        LotLower.setVisible(false);
+        LotRaise.setVisible(false);
+        LotLabel.setVisible(false);
+        ComputerApply.setVisible(false);
+
+
+
+
+
+        value = 0;
+        labelHBox.setVisible(true);
+        hours -= 1;
+        if(hours < 6){
+          hours = 24;
+          day += 1;
+          int chance = (int)(Math.random()*10);
+          if(chance == 3){
+            BigDecimal winner = new BigDecimal(LotValue);
+            money = money.add(winner);
+            LotValue = 0;
+          }
+        }
+         MoneyLabel.setText("Money on Hand: " + money);
+    DayLabel.setText("Day: " + day);
+    HoursLabel.setText("Hours Left: " + hours);
+    HealthLabel.setText("Health: " + health);
+    BankLabel.setText("Money in Account: " + bank);
+    NameLabel.setText("Name: " + name);
       }
     });
 
@@ -1209,12 +1345,13 @@ nameEnter.setVisible(true);
                   AVJWork.setVisible(false);
                   AVJWorkNight.setVisible(false);
                   toFun.setVisible(false);
-                  Bank.setVisible(true);
-                  Casino.setVisible(true);
-                  Hospital.setVisible(true);
+                  Bank.setVisible(false);
+                  Casino.setVisible(false);
+                  Hospital.setVisible(false);
                   McD.setVisible(false);
                   Computer.setVisible(false);
                   Target.setVisible(false);
+                  toWork.setVisible(false);
                   HospitalIMG.setVisible(false);
                   Appointment.setVisible(false);
                   Surgery.setVisible(false);
@@ -1453,9 +1590,10 @@ nameEnter.setVisible(true);
                   AVJWork.setVisible(false);
                   AVJWorkNight.setVisible(false);
                   toFun.setVisible(false);
-                  Bank.setVisible(true);
-                  Casino.setVisible(true);
-                  Hospital.setVisible(true);
+                  toWork.setVisible(false);
+                  Bank.setVisible(false);
+                  Casino.setVisible(false);
+                  Hospital.setVisible(false);
                   McD.setVisible(false);
                   Computer.setVisible(false);
                   Target.setVisible(false);
@@ -1696,10 +1834,11 @@ nameEnter.setVisible(true);
                   }
                   AVJWork.setVisible(false);
                   AVJWorkNight.setVisible(false);
+                  toWork.setVisible(false);
                   toFun.setVisible(false);
-                  Bank.setVisible(true);
-                  Casino.setVisible(true);
-                  Hospital.setVisible(true);
+                  Bank.setVisible(false);
+                  Casino.setVisible(false);
+                  Hospital.setVisible(false);
                   McD.setVisible(false);
                   Computer.setVisible(false);
                   Target.setVisible(false);
@@ -1941,13 +2080,14 @@ nameEnter.setVisible(true);
                   AVJWork.setVisible(false);
                   AVJWorkNight.setVisible(false);
                   toFun.setVisible(false);
-                  Bank.setVisible(true);
-                  Casino.setVisible(true);
-                  Hospital.setVisible(true);
+                  Bank.setVisible(false);
+                  Casino.setVisible(false);
+                  Hospital.setVisible(false);
                   McD.setVisible(false);
                   Computer.setVisible(false);
                   Target.setVisible(false);
                   HospitalIMG.setVisible(false);
+                  toWork.setVisible(false);
                   Appointment.setVisible(false);
                   Surgery.setVisible(false);
                   Emergency.setVisible(false);
@@ -2284,10 +2424,11 @@ nameEnter.setVisible(true);
               }
               AVJWork.setVisible(false);
               AVJWorkNight.setVisible(false);
+              toWork.setVisible(false);
               toFun.setVisible(false);
-              Bank.setVisible(true);
-              Casino.setVisible(true);
-              Hospital.setVisible(true);
+              Bank.setVisible(false);
+              Casino.setVisible(false);
+              Hospital.setVisible(false);
               McD.setVisible(false);
               Computer.setVisible(false);
               Target.setVisible(false);
@@ -2521,9 +2662,10 @@ nameEnter.setVisible(true);
                   AVJWork.setVisible(false);
                   AVJWorkNight.setVisible(false);
                   toFun.setVisible(false);
-                  Bank.setVisible(true);
-                  Casino.setVisible(true);
-                  Hospital.setVisible(true);
+                  Bank.setVisible(false);
+                  toWork.setVisible(false);
+                  Casino.setVisible(false);
+                  Hospital.setVisible(false);
                   McD.setVisible(false);
                   Computer.setVisible(false);
                   Target.setVisible(false);
@@ -3214,6 +3356,7 @@ nameEnter.setVisible(true);
     SlotsSpin.setVisible(false);
     SlotsSpin.setOnAction(new EventHandler<ActionEvent>() {
       @Override public void handle(ActionEvent e) {
+        SlotsWinningLabel.setText("");
         BigDecimal valueBig = new BigDecimal(value);
         if(money.compareTo(valueBig) >= 0){
         money = money.subtract(valueBig);
@@ -3222,7 +3365,7 @@ nameEnter.setVisible(true);
         int random3 = (int)(Math.random()*10);
         SlotsOutputLabel.setText(random1 + "  " + random2 + "  " +random3);
         if(random1 == random2 && random2 == random3){
-          int winning = value *100;
+          int winning = value *105;
           SlotsWinningLabel.setText(winning+"");
           BigDecimal winnings = new BigDecimal(winning);
           money = money.add(winnings);
@@ -3596,6 +3739,7 @@ nameEnter.setVisible(true);
         LotLower.setVisible(false);
         LotRaise.setVisible(false);
         LotLabel.setVisible(false);
+        ComputerApply.setVisible(false);
 
 
 
